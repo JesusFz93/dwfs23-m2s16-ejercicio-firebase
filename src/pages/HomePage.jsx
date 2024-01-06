@@ -7,6 +7,7 @@ const HomePage = () => {
       <main className="row">
         <article className="col">
           <p>Estas en la pagina principal.</p>
+          <p>Nueva publicacion.</p>
         </article>
       </main>
     </>
