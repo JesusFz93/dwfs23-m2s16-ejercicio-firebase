@@ -1,11 +1,19 @@
 import { db } from "../firebase/firebase";
-import { collection, addDoc, getDocs, doc, getDoc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  doc,
+  getDoc,
+  updateDoc,
+  deleteDoc,
+} from "firebase/firestore";
 
 const PeliculasPage = () => {
   const crearPelicula = async () => {
     const pelicula = {
       nombre: "Bambi",
-      cateogoria: "Animada",
+      categoria: "Animada",
       imagen: "https://images8.alphacoders.com/798/thumb-1920-798164.jpg",
     };
 
@@ -27,13 +35,29 @@ const PeliculasPage = () => {
   };
 
   const obtenerPelicula = async () => {
-    const documento = doc(db, "peliculas", "N4OGRsYbxbnqPXz3XAf4");
+    const documento = doc(db, "peliculas", "obDiKswNPSdx76uHfPMx");
     const resp = await getDoc(documento);
     const pelicula = {
       id: resp.id,
       ...resp.data(),
     };
     console.log(pelicula);
+  };
+
+  const actualizarPelicula = async () => {
+    const pelicula = {
+      nombre: "Bambi 3",
+    };
+
+    const documento = doc(db, "peliculas", "obDiKswNPSdx76uHfPMx");
+    await updateDoc(documento, pelicula);
+    await obtenerPelicula();
+  };
+
+  const eliminarPelicula = async () => {
+    const documento = doc(db, "peliculas", "obDiKswNPSdx76uHfPMx");
+    await deleteDoc(documento);
+    await obtenerPeliculas();
   };
 
   return (
@@ -50,6 +74,20 @@ const PeliculasPage = () => {
         onClick={obtenerPelicula}
       >
         Obtener Pelicula
+      </button>
+      <button
+        type="button"
+        className="btn btn-warning"
+        onClick={actualizarPelicula}
+      >
+        Actualizar Pelicula
+      </button>
+      <button
+        type="button"
+        className="btn btn-danger"
+        onClick={eliminarPelicula}
+      >
+        Eliminar Pelicula
       </button>
     </>
   );
