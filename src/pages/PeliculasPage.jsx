@@ -1,5 +1,5 @@
 import { db } from "../firebase/firebase";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDocs, doc, getDoc } from "firebase/firestore";
 
 const PeliculasPage = () => {
   const crearPelicula = async () => {
@@ -26,6 +26,16 @@ const PeliculasPage = () => {
     console.log(peliculas);
   };
 
+  const obtenerPelicula = async () => {
+    const documento = doc(db, "peliculas", "N4OGRsYbxbnqPXz3XAf4");
+    const resp = await getDoc(documento);
+    const pelicula = {
+      id: resp.id,
+      ...resp.data(),
+    };
+    console.log(pelicula);
+  };
+
   return (
     <>
       <button type="button" className="btn btn-success" onClick={crearPelicula}>
@@ -33,6 +43,13 @@ const PeliculasPage = () => {
       </button>
       <button type="button" className="btn btn-info" onClick={obtenerPeliculas}>
         Obtener Peliculas
+      </button>
+      <button
+        type="button"
+        className="btn btn-secondary"
+        onClick={obtenerPelicula}
+      >
+        Obtener Pelicula
       </button>
     </>
   );
