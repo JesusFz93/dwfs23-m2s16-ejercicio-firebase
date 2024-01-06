@@ -54,6 +54,16 @@ const NavBar = () => {
                 Peliculas
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+                to="/farmacia"
+              >
+                Farmacia
+              </NavLink>
+            </li>
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"

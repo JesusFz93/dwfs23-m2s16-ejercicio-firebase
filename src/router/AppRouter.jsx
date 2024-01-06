@@ -10,6 +10,7 @@ import AboutPage from "../pages/AboutPage";
 import NavBar from "../components/NavBar";
 // import Footer from "../components/Footer";
 import PeliculasPage from "../pages/PeliculasPage";
+import FarmaciaPage from "../pages/FarmaciaPage";
 
 const AppRouter = () => {
   return (
@@ -20,6 +21,7 @@ const AppRouter = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/peliculas" element={<PeliculasPage />} />
+          <Route path="/farmacia" element={<FarmaciaPage />} />
 
           <Route path="/*" element={<Navigate to="/" replace />} />
         </Routes>
