@@ -60,6 +60,11 @@ const PeliculasPage = () => {
     await obtenerPeliculas();
   };
 
+  const mostrarVariable = () => {
+    const variable_entorno = import.meta.env.VITE_VARIABLE_ENTORNO;
+    console.log(variable_entorno);
+  };
+
   return (
     <>
       <button type="button" className="btn btn-success" onClick={crearPelicula}>
@@ -88,6 +93,13 @@ const PeliculasPage = () => {
         onClick={eliminarPelicula}
       >
         Eliminar Pelicula
+      </button>
+      <button
+        type="button"
+        className="btn btn-primary"
+        onClick={mostrarVariable}
+      >
+        Mostrar variable
       </button>
     </>
   );
